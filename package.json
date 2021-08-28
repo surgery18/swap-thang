@@ -1,0 +1,27 @@
+{
+  "name": "swap-thang",
+  "version": "1.0.0",
+  "description": "This is a demo dApp to demonstrate swapping tokens (Send, Withdraw, And Purchase) to a custom token.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surgery18/swap-thang.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/surgery18/swap-thang/issues"
+  },
+  "homepage": "https://github.com/surgery18/swap-thang#readme",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1"
+  }
+}
