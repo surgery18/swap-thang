@@ -12,7 +12,7 @@ const fromWei = (n) => {
     return web3.utils.fromWei(n, "ether")
 }
 
-const BN = web3.utils.BN;
+const BN = web3.utils.BN
 
 contract("Token", async ([deployer, accountb, accountc]) => {
     let token
