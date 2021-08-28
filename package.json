@@ -2,13 +2,13 @@
   "name": "swap-thang",
   "version": "1.0.0",
   "description": "This is a demo dApp to demonstrate swapping tokens (Send, Withdraw, And Purchase) to a custom token.",
-  "main": "truffle-config.js",
+  
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
@@ -27,12 +27,14 @@
     "@parcel/transformer-vue": "^2.0.0-rc.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
-    "parcel": "^2.0.0-rc.0",
-    "vue": "^3.2.6"
+    "parcel": "^2.0.0-rc.0"
   },
   "dependencies": {
+    "@swc/helpers": "^0.2.13",
     "bootstrap": "^5.1.0",
     "bootstrap-icons": "^1.5.0",
+    "regenerator-runtime": "^0.13.9",
+    "vue": "^3.2.6",
     "vuex": "^4.0.2",
     "web3": "^1.5.2"
   }
