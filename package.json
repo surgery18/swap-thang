@@ -26,14 +26,15 @@
   "homepage": "https://github.com/surgery18/swap-thang#readme",
   "dependencies": {
     "@parcel/transformer-vue": "^2.0.0-rc.0",
-    "chai": "^4.3.4",
-    "chai-as-promised": "^7.1.1",
-    "parcel": "^2.0.0-rc.0",
     "@swc/helpers": "^0.2.13",
     "bootstrap": "^5.1.0",
     "bootstrap-icons": "^1.5.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
     "express": "^4.17.1",
+    "parcel": "^2.0.0-rc.0",
     "regenerator-runtime": "^0.13.9",
+    "truffle-hdwallet-provider": "^1.0.17",
     "vue": "^3.2.6",
     "vuex": "^4.0.2",
     "web3": "^1.5.2"

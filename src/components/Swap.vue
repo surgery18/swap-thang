@@ -32,8 +32,8 @@
 <script>
 import AssetEntry from './AssetEntry.vue'
 import Web3 from "web3"
-import Token from "../../build/contracts/Token.json"
-import SwapThang from "../../build/contracts/SwapThang.json"
+import Token from "../../build/contracts-deployed-testnet/Token.json"
+import SwapThang from "../../build/contracts-deployed-testnet/SwapThang.json"
 import {mapMutations} from "vuex"
 
 const RATE = 1 * 10**6
