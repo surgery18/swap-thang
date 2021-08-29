@@ -24,7 +24,7 @@
     "url": "https://github.com/surgery18/swap-thang/issues"
   },
   "homepage": "https://github.com/surgery18/swap-thang#readme",
-  "devDependencies": {
+  "dependencies": {
     "@parcel/transformer-vue": "^2.0.0-rc.0",
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
