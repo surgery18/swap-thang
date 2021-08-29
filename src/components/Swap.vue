@@ -4,14 +4,14 @@
             <asset-entry
                 @data="enterData"
                 :val="assetA"
-                :asset="getAsset(getIndexA)"
+                :asset="sell ? assets[1] : assets[0]"
                 :disabled="buttonloading"
             ></asset-entry>
             <div class="text-center mt-2">
                 <button type="button" class="btn btn-lg btn-primary" @click="reverse" :disabled="buttonloading"><i class="bi bi-arrow-down-up" ></i></button>
             </div>
             <asset-entry
-                :asset="getAsset(getIndexB)"
+                :asset="sell ? assets[0] : assets[1]"
                 :val="assetB"
                 :disabled="true"
             ></asset-entry>
@@ -45,8 +45,18 @@ export default {
         return {
             assetA: "",
             assetB: "",
-            assets: ["ETH", "PANGO"],
-            balances: [0, 0],
+            // assets: ["ETH", "PANGO"],
+            // balances: [0, 0],
+            assets: [
+                {
+                    name: "ETH",
+                    balance: 0,
+                },
+                {
+                    name: "PANGO",
+                    balance: 0,
+                }
+            ],
             sell: false,
             approved: false,
             tokenContract: null,
@@ -107,12 +117,12 @@ export default {
         this.getBalances()
     },
     computed: {
-        getIndexA() {
-            return this.sell ? 1 : 0
-        },
-        getIndexB() {
-            return this.sell ? 0 : 1
-        },
+        // getIndexA() {
+        //     return this.sell ? 1 : 0
+        // },
+        // getIndexB() {
+        //     return this.sell ? 0 : 1
+        // },
         canSwap() {
             return (this.sell && this.approved) || !this.sell
         }
@@ -127,12 +137,12 @@ export default {
             }
             this.assetA = +v;
         },
-        getAsset(index) {
-            return {
-                name: this.assets[index],
-                balance: this.balances[index]
-            }
-        },
+        // getAsset(index) {
+        //     return {
+        //         name: this.assets[index],
+        //         balance: this.balances[index]
+        //     }
+        // },
         reverse() {
             this.sell = !this.sell
             this.assetA = this.assetB
@@ -151,6 +161,8 @@ export default {
                 try {
                     const receipt = await this.swapThangContract.methods.buy().send({from: this.walletAddress, value: amount})
                     console.log(receipt)
+                    this.assetA = ""
+                    this.assetB = ""
                     this.getBalances()
                 } catch (e) {
                     console.log(e)
@@ -160,6 +172,9 @@ export default {
                 try {
                     const receipt = await this.swapThangContract.methods.sell(amount).send({from: this.walletAddress})
                     console.log(receipt)
+                    this.assetA = ""
+                    this.assetB = ""
+                    this.approved = false;
                     this.getBalances()
                 } catch (e) {
                     console.log(e)
@@ -189,14 +204,21 @@ export default {
             ethAmount = window.web3.utils.fromWei(ethAmount, 'Ether')
             tokenAmount = window.web3.utils.fromWei(tokenAmount, 'Ether')
 
-            // console.log(ethAmount, tokenAmount)
-            if (this.sell) {
-                this.balances[0] = tokenAmount.toString()
-                this.balances[1] = ethAmount.toString()
-            } else {
-                this.balances[1] = tokenAmount.toString()
-                this.balances[0] = ethAmount.toString()
-            }
+            this.$nextTick(() => {
+                console.log(ethAmount, tokenAmount)
+                if (this.sell) {
+                    // this.balances[0] = tokenAmount.toString()
+                    this.assets[1].balance = tokenAmount.toString()
+                    // this.balances[1] = ethAmount.toString()
+                    this.assets[0].balance = ethAmount.toString()
+                    // console.log(this.balances)
+                } else {
+                    // this.balances[1] = tokenAmount.toString()
+                    this.assets[1].balance = tokenAmount.toString()
+                    // this.balances[0] = ethAmount.toString()
+                    this.assets[0].balance = ethAmount.toString()
+                }
+            })
         }
     }
 }
