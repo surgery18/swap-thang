@@ -7,7 +7,8 @@
   },
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html",
+    "build": "parcel build --public-url / --no-cache src/index.html",
+    "heroku-postbuild": "parcel --version",
     "serve": "node server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
